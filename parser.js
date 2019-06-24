@@ -30,10 +30,11 @@ module.exports = text => {
       const td = $(el).find('td').get();
       const day_text = $(td[0]).text();
       const full_text = $(td[1]).text();
+      const link = $(td[1]).find('a').attr('href');
       const month = titles[i1];
       const month_number = orderedMonths.indexOf(month) + 1;
       const dates = day_text.split('-').map(day => new Date(`${year}-${month_number}-${day}`));
-      return {month, day_text, dates, full_text};
+      return {link, month, day_text, dates, full_text};
     }).get();
   }).get().sort((a, b) => {
     const aDate = a.dates[0].getTime();
